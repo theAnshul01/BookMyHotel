@@ -1,13 +1,14 @@
-import { NavLink } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 
 const Home = ({ 
     guestCount, setGuestCount, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate }) => {
 
+    // calculate max date for checkout (90 days from today)
     const today = new Date();
     const maxDate = new Date();
     maxDate.setDate(today.getDate()+90); // 90 days from today
     const maxDateString = maxDate.toISOString().split("T")[0]; 
-      
+
     return (
         <div className="container mt-4">
             {/* Hero / Jumbotron */}
@@ -72,7 +73,7 @@ const Home = ({
                 </div>
 
                 <div className="row">
-                    <div className="col-md-4 mb-3">
+                    <Link to="/hotels/1" className="col-md-4 mb-3 text-decoration-none">
                         <div className="card h-100 shadow-sm">
                             <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 1" />
                             <div className="card-body">
@@ -81,9 +82,9 @@ const Home = ({
                                 <p className="card-text fw-bold">Starting ₹3200 / night</p>
                             </div>
                         </div>
-                    </div>
+                    </Link>
 
-                    <div className="col-md-4 mb-3">
+                    <Link to="/hotels/2" className="col-md-4 mb-3 text-decoration-none">
                         <div className="card h-100 shadow-sm">
                             <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 2" />
                             <div className="card-body">
@@ -92,9 +93,9 @@ const Home = ({
                                 <p className="card-text fw-bold">Starting ₹5400 / night</p>
                             </div>
                         </div>
-                    </div>
+                    </Link>
 
-                    <div className="col-md-4 mb-3">
+                    <Link to="/hotels/3" className="col-md-4 mb-3 text-decoration-none">
                         <div className="card h-100 shadow-sm">
                             <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 3" />
                             <div className="card-body">
@@ -103,7 +104,7 @@ const Home = ({
                                 <p className="card-text fw-bold">Starting ₹2800 / night</p>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

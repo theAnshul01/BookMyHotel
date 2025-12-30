@@ -14,7 +14,7 @@ body,
 #root,
 .App {
   height: 100%;
-  overflow-y: auto;
+  /* overflow-y: auto; */  /* Enable vertical scrolling within the App container if needed */
   -ms-overflow-style: none;
   /* IE and Edge */
   scrollbar-width: none;
@@ -38,4 +38,13 @@ code {
 button:disabled {
   cursor: not-allowed;
   pointer-events: all !important;
+}
+
+.property-highlights {
+  background-color: #3e88d6;
+}
+
+.rating {
+  width:100%;
+  display: inline-block;
 }

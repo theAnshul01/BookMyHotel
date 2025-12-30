@@ -16,7 +16,7 @@ const HotelPage = ({hotelList}) => {
             
             <div className="row">
                 {hotelList.map((hotel) => (
-                    <NavLink className="col-md-4 mb-4 text-decoration-none" key={hotel.id}>
+                    <NavLink className="col-md-4 mb-4 text-decoration-none" key={hotel.id} to={`/hotels/${hotel.id}`}>
                         <div className="card h-100">
                             <img src={hotel.image} className="card-img-top" alt={hotel.name} />
                             <div className="card-body">

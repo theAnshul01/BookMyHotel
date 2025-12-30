@@ -1,12 +1,18 @@
+// components imports
 import Navbar from "./Components/Navbar";
 import Home from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
+import HotelPage from "./Components/HotelPage";
+import HotelDetail from "./Components/HotelDetail";
+
+// utility imports
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import HotelPage from "./Components/HotelPage";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
 
+  // mock hote data
   const [hotelList] = useState([
     {
       id: 1,
@@ -109,11 +115,14 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   // initialize as empty string so input is controlled and .toLowerCase() is safe
   const [searchVal, setSearchVal] = useState("");
+
+  // state for home page filters - search form
   const [guestCount, setGuestCount] = useState(1);
-  
   const [checkinDate, setCheckinDate] = useState(new Date().toISOString().split("T")[0]);
   const [checkoutDate, setCheckoutDate] = useState(new Date(new Date().setDate(new Date().getDate()+1)).toISOString().split("T")[0]);
 
+
+  // filter hotel list based on search value
   useEffect(() => {
     const results = hotelList.filter((hotel) => (
       hotel.name.toLowerCase().includes(searchVal.toLowerCase()) ||
@@ -124,6 +133,7 @@ function App() {
 
   return (
     <div className="App">
+      <ScrollToTop />
       <Navbar hotelList={hotelList}
         searchVal={searchVal}
         setSearchVal={setSearchVal}
@@ -134,6 +144,7 @@ function App() {
           checkinDate={checkinDate} setCheckinDate={setCheckinDate}
           checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} />} />
         <Route path="/hotels" element={<HotelPage hotelList={searchResults} />} />
+        <Route path="/hotels/:id" element={<HotelDetail hotelList={hotelList} />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
