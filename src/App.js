@@ -7,7 +7,7 @@ import HotelDetails from "./Components/HotelDetails";
 
 function App() {
 
-  const [hotelList, setHotelList] = useState([
+  const [hotelList] = useState([
     {
       id: 1,
       name: "Grand Palace Hotel",
@@ -109,13 +109,16 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   // initialize as empty string so input is controlled and .toLowerCase() is safe
   const [searchVal, setSearchVal] = useState("");
+  const [guestCount, setGuestCount] = useState(1);
+  
+  const [checkinDate, setCheckinDate] = useState(new Date().toISOString().split("T")[0]);
+  const [checkoutDate, setCheckoutDate] = useState(new Date(new Date().setDate(new Date().getDate()+1)).toISOString().split("T")[0]);
 
   useEffect(() => {
     const results = hotelList.filter((hotel) => (
       hotel.name.toLowerCase().includes(searchVal.toLowerCase()) ||
       hotel.location.toLowerCase().includes(searchVal.toLowerCase())
     ));
-    console.log('useEffect running')
     setSearchResults(results);
   }, [searchVal, hotelList])
 
@@ -127,7 +130,9 @@ function App() {
         searchResults={searchResults}
         setSearchResults={setSearchResults} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home guestCount={guestCount} setGuestCount={setGuestCount}
+          checkinDate={checkinDate} setCheckinDate={setCheckinDate}
+          checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} />} />
         <Route path="/hotels" element={<HotelDetails hotelList={searchResults} />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>

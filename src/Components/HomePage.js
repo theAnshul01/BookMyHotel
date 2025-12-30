@@ -1,6 +1,13 @@
 import { NavLink } from "react-router-dom"
 
-const Home = () => {
+const Home = ({ 
+    guestCount, setGuestCount, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate }) => {
+
+    const today = new Date();
+    const maxDate = new Date();
+    maxDate.setDate(today.getDate()+90); // 90 days from today
+    const maxDateString = maxDate.toISOString().split("T")[0]; 
+      
     return (
         <div className="container mt-4">
             {/* Hero / Jumbotron */}
@@ -26,17 +33,26 @@ const Home = () => {
             <div className="card mb-4 shadow-sm">
                 <div className="card-body">
                     <form className="row g-2 align-items-end">
-                        <div className="col-sm-6 col-md-5">
+                        <div className="col-sm-6 col-md-3">
                             <label className="form-label">Destination</label>
                             <input type="text" className="form-control" placeholder="Enter city or hotel name"/>
                         </div>
                         <div className="col-sm-3 col-md-2">
                             <label htmlFor="checkin" className="form-label">Check-in</label>
-                            <input type="date" className="form-control" id="checkin" />
+                            <input type="date" className="form-control" id="checkin" 
+                            min={new Date().toISOString().split("T")[0]}
+                            value={checkinDate} onChange={(e) => setCheckinDate(e.target.value)} />
                         </div>
                         <div className="col-sm-3 col-md-2">
                             <label htmlFor="checkout" className="form-label">Check-out</label>
-                            <input type="date" className="form-control" id="checkout" />
+                            <input type="date" className="form-control" id="checkout" 
+                            min={checkinDate} max={maxDateString}
+                            value={checkoutDate} onChange={(e) => setCheckoutDate(e.target.value)} />
+                        </div>
+                        <div className="col-sm-3 col-md-2">
+                            <label htmlFor="guestcount" className="form-label">Guest-count</label>
+                            <input type="number" className="form-control" id="guestcount"
+                            value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))} />
                         </div>
                         <div className="col-sm-12 col-md-3 d-grid">
                             <button type="button" className="btn btn-success btn-block" disabled>Search Hotels</button>

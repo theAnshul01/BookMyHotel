@@ -1,5 +1,4 @@
-import React from 'react'
-
+import { NavLink } from "react-router-dom"
 const HotelDetails = ({hotelList}) => {
     if (hotelList.length === 0) {
         return (
@@ -14,9 +13,10 @@ const HotelDetails = ({hotelList}) => {
 
     return (
         <div className='container mt-4'>
+            
             <div className="row">
                 {hotelList.map((hotel) => (
-                    <div className="col-md-4 mb-4" key={hotel.id}>
+                    <NavLink className="col-md-4 mb-4 text-decoration-none" key={hotel.id}>
                         <div className="card h-100">
                             <img src={hotel.image} className="card-img-top" alt={hotel.name} />
                             <div className="card-body">
@@ -26,7 +26,7 @@ const HotelDetails = ({hotelList}) => {
                                 <p className="card-text fw-bold">₹{hotel.pricePerNight} / day</p>
                             </div>
                         </div>
-                    </div>
+                    </NavLink>
                 ))}
             </div>
         </div>

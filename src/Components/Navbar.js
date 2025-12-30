@@ -61,7 +61,8 @@ const Navbar = ({ hotelList, searchVal, setSearchVal,searchResults, setSearchRes
                         setSearchResults={setSearchResults} 
                     />}
                     {/* Right side buttons */}
-                    <div className="d-flex gap-2">
+                    <div className="d-flex gap-2 align-items-center ms-3">
+                        <NavLink className='nav-link text-light' to='/'>List your property</NavLink>
                         <button className="btn btn-outline-light" type="button">
                             Login
                         </button>
