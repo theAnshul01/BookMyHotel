@@ -3,7 +3,7 @@ import Home from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
-import HotelDetails from "./Components/HotelDetails";
+import HotelPage from "./Components/HotelPage";
 
 function App() {
 
@@ -133,7 +133,7 @@ function App() {
         <Route path="/" element={<Home guestCount={guestCount} setGuestCount={setGuestCount}
           checkinDate={checkinDate} setCheckinDate={setCheckinDate}
           checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} />} />
-        <Route path="/hotels" element={<HotelDetails hotelList={searchResults} />} />
+        <Route path="/hotels" element={<HotelPage hotelList={searchResults} />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
     </div>
