@@ -50,7 +50,7 @@ const HotelDetail = ({ hotelList }) => {
             </div>
 
             {/* About Property Section */}
-            <div className="row mt-4">
+            <div className="row mt-4 me-auto">
                 <div className="about-section col-md-9">
                     <h4 className="h4 mb-3">About this Property</h4>
                     <div>
@@ -83,7 +83,7 @@ const HotelDetail = ({ hotelList }) => {
                     </div>
                 </div>
             </div>
-
+            <hr />
             <div className="guest-reviews mt-5">
                 <h3 className="h3 mb-3">Guest Reviews</h3>
                 <div className="review mb-3">
