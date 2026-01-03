@@ -1,5 +1,25 @@
 import { NavLink } from "react-router-dom"
-const HotelPage = ({hotelList}) => {
+
+
+const HotelPage = ({hotelList, sortOption}) => {
+    const sortedResults = [...hotelList];
+    if (sortOption === "priceLowHigh") {
+        sortedResults.sort((a, b) => a.pricePerNight - b.pricePerNight);
+    }
+
+    if (sortOption === "priceHighLow") {
+        sortedResults.sort((a, b) => b.pricePerNight - a.pricePerNight);
+    }
+
+    if (sortOption === "rating") {
+        sortedResults.sort((a, b) => b.rating - a.rating);
+    }
+
+    if (sortOption === "name") {
+        sortedResults.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+
     if (hotelList.length === 0) {
         return (
             <div className="container mt-4">
@@ -15,7 +35,7 @@ const HotelPage = ({hotelList}) => {
         <div className='container mt-4'>
             
             <div className="row">
-                {hotelList.map((hotel) => (
+                {sortedResults.map((hotel) => (
                     <NavLink className="col-md-4 mb-4 text-decoration-none" key={hotel.id} to={`/hotels/${hotel.id}`}>
                         <div className="card h-100">
                             <img src={hotel.image} className="card-img-top" alt={hotel.name} />

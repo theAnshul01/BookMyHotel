@@ -126,6 +126,8 @@ function App() {
   const [checkinDate, setCheckinDate] = useState(new Date().toISOString().split("T")[0]);
   const [checkoutDate, setCheckoutDate] = useState(new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]);
 
+  // state for sorting option
+  const [sortOption, setSortOption] = useState("Relevance");
 
   // filter hotel list based on search value
   useEffect(() => {
@@ -143,12 +145,14 @@ function App() {
         searchVal={searchVal}
         setSearchVal={setSearchVal}
         searchResults={searchResults}
-        setSearchResults={setSearchResults} />
+        setSearchResults={setSearchResults} 
+        sortOption={sortOption}
+        setSortOption={setSortOption}/>
       <Routes>
         <Route path="/" element={<Home guestCount={guestCount} setGuestCount={setGuestCount}
           checkinDate={checkinDate} setCheckinDate={setCheckinDate}
           checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} />} />
-        <Route path="/hotels" element={<HotelPage hotelList={searchResults} />} />
+        <Route path="/hotels" element={<HotelPage hotelList={searchResults} sortOption={sortOption} />} />
         <Route path="/hotels/:id" element={<HotelDetail hotelList={hotelList} />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/signup" element={<Signup />} />

@@ -1,6 +1,8 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Searchbar from './Searchbar'
-const Navbar = ({ hotelList, searchVal, setSearchVal,searchResults, setSearchResults }) => {
+import SortBy from './SortBy'
+import logo from '../utils/Logo.png'
+const Navbar = ({ hotelList, searchVal, setSearchVal, searchResults, setSearchResults, sortOption, setSortOption }) => {
     const location = useLocation();
     return (
         <nav className="navbar navbar-expand-md navbar-dark bg-dark">
@@ -8,6 +10,7 @@ const Navbar = ({ hotelList, searchVal, setSearchVal,searchResults, setSearchRes
 
                 {/* Brand */}
                 <NavLink className="navbar-brand" to="/">
+                    <img src={logo} alt="BMH Logo" height="30" className="me-2" />
                     BookMyHotel
                 </NavLink>
 
@@ -53,20 +56,25 @@ const Navbar = ({ hotelList, searchVal, setSearchVal,searchResults, setSearchRes
                             </NavLink>
                         </li>
                     </ul>
+                    {
+                        location.pathname === '/hotels' &&
+                        <SortBy
+                            sortOption={sortOption}
+                            setSortOption={setSortOption} />
+                    }
                     {location.pathname === '/hotels' &&
-                    <Searchbar hotelList={hotelList} 
-                        searchVal={searchVal}
-                        setSearchVal={setSearchVal} 
-                        searchResults={searchResults} 
-                        setSearchResults={setSearchResults} 
-                    />}
+                        <Searchbar hotelList={hotelList}
+                            searchVal={searchVal}
+                            setSearchVal={setSearchVal}
+                            
+                        />}
                     {/* Right side buttons */}
                     <div className="d-flex gap-2 align-items-center ms-3">
                         <NavLink className='nav-link text-light' to='/listingadminlogin'>List your property</NavLink>
                         <Link to="/login">
-                        <button className="btn btn-warning" type="button">
-                            Login
-                        </button>
+                            <button className="btn btn-warning" type="button">
+                                Login
+                            </button>
                         </Link>
                         {/* <Link to="/signup">
                         <button className="btn btn-warning" type="button">
