@@ -12,7 +12,7 @@ const Home = ({
     return (
         <div className="container mt-4">
             {/* Hero / Jumbotron */}
-            <div className="p-5 mb-4 bg-light rounded-3 shadow-sm">
+            <div className="p-5 bg-light rounded-3 shadow-sm">
                 <div className="container-fluid py-3">
                     <div className="row align-items-center">
                         <div className="col-md-7">
@@ -50,7 +50,7 @@ const Home = ({
                             min={checkinDate} max={maxDateString}
                             value={checkoutDate} onChange={(e) => setCheckoutDate(e.target.value)} />
                         </div>
-                        <div className="col-sm-3 col-md-2">
+                        <div className="col-sm-12 col-md-2">
                             <label htmlFor="guestcount" className="form-label">Guest-count</label>
                             <input type="number" className="form-control" id="guestcount"
                             value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))} />

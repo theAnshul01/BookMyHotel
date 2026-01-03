@@ -4,6 +4,11 @@ import Home from "./Components/HomePage";
 import AboutPage from "./Components/AboutPage";
 import HotelPage from "./Components/HotelPage";
 import HotelDetail from "./Components/HotelDetail";
+import Footer from "./Components/Footer";
+import Signup from "./Components/Signup";
+import Login from "./Components/Login";
+import ListingAdminLogin from "./Components/ListingAdminLogin";
+import BookingPage from "./Components/BookingPage";
 
 // utility imports
 import { Routes, Route } from 'react-router-dom'
@@ -119,7 +124,7 @@ function App() {
   // state for home page filters - search form
   const [guestCount, setGuestCount] = useState(1);
   const [checkinDate, setCheckinDate] = useState(new Date().toISOString().split("T")[0]);
-  const [checkoutDate, setCheckoutDate] = useState(new Date(new Date().setDate(new Date().getDate()+1)).toISOString().split("T")[0]);
+  const [checkoutDate, setCheckoutDate] = useState(new Date(new Date().setDate(new Date().getDate() + 1)).toISOString().split("T")[0]);
 
 
   // filter hotel list based on search value
@@ -146,7 +151,12 @@ function App() {
         <Route path="/hotels" element={<HotelPage hotelList={searchResults} />} />
         <Route path="/hotels/:id" element={<HotelDetail hotelList={hotelList} />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/listingadminlogin" element={<ListingAdminLogin />} />
+        <Route path="/booking/:id" element={<BookingPage hotelList={hotelList} checkinDate={checkinDate} setCheckinDate={setCheckinDate} checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} guestCount={guestCount} setGuestCount={setGuestCount} />} />
       </Routes>
+      <Footer />
     </div>
 
   );

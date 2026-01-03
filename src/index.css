@@ -14,21 +14,22 @@ body,
 #root,
 .App {
   height: 100%;
-  /* overflow-y: auto; */  /* Enable vertical scrolling within the App container if needed */
+  /* overflow-y: auto; */
+  /* Enable vertical scrolling within the App container if needed */
   -ms-overflow-style: none;
   /* IE and Edge */
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
   /* Firefox */
 }
 
 /* Chrome, Safari and Opera */
-html::-webkit-scrollbar,
+/* html::-webkit-scrollbar,
 body::-webkit-scrollbar,
 #root::-webkit-scrollbar,
 .App::-webkit-scrollbar {
   width: 0px;
   background: transparent;
-}
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -41,10 +42,10 @@ button:disabled {
 }
 
 .property-highlights {
-  background-color: #3e88d6;
+  background-color: #1075e0;
 }
 
 .rating {
-  width:100%;
+  width: 100%;
   display: inline-block;
 }

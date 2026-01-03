@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import Searchbar from './Searchbar'
 const Navbar = ({ hotelList, searchVal, setSearchVal,searchResults, setSearchResults }) => {
     const location = useLocation();
@@ -62,13 +62,17 @@ const Navbar = ({ hotelList, searchVal, setSearchVal,searchResults, setSearchRes
                     />}
                     {/* Right side buttons */}
                     <div className="d-flex gap-2 align-items-center ms-3">
-                        <NavLink className='nav-link text-light' to='/'>List your property</NavLink>
-                        <button className="btn btn-outline-light" type="button">
+                        <NavLink className='nav-link text-light' to='/listingadminlogin'>List your property</NavLink>
+                        <Link to="/login">
+                        <button className="btn btn-warning" type="button">
                             Login
                         </button>
+                        </Link>
+                        {/* <Link to="/signup">
                         <button className="btn btn-warning" type="button">
                             Sign Up
                         </button>
+                        </Link> */}
                     </div>
 
                 </div>

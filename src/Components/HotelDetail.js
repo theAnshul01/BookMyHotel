@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 const HotelDetail = ({ hotelList }) => {
 
@@ -17,7 +17,9 @@ const HotelDetail = ({ hotelList }) => {
 
                 <div className="price-info text-end">
                     <h3 className="fw-bold text-success">₹{hotelList.find(hotel => hotel.id === parseInt(id))?.pricePerNight} / Night</h3>
-                    <button className="btn btn-primary btn-lg mt-2">Book Now</button>
+                    <Link to={`/booking/${id}`}>
+                        <button className="btn btn-primary btn-lg mt-2">Book Now</button>
+                    </Link>
                 </div>
             </div>
 
@@ -79,7 +81,9 @@ const HotelDetail = ({ hotelList }) => {
                         <p>You can cancel later, so lock in this great price today!</p>
                         <h6>Free Parking</h6>
                         <p>Enjoy complimentary parking during your stay!</p>
+                        <Link to={`/booking/${id}`}>
                         <button className="btn btn-light">Book Now</button>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -89,7 +93,7 @@ const HotelDetail = ({ hotelList }) => {
                 <div className="review mb-3">
                     <h5>Excellent Stay!</h5>
                 </div>
-                
+
             </div>
         </div>
     )
