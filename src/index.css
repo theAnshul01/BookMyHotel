@@ -49,3 +49,11 @@ button:disabled {
   width: 100%;
   display: inline-block;
 }
+
+form.listingFormContainer {
+  
+  max-width: 600px;
+  min-height: auto;
+  margin: 0 auto;
+  padding: 40px;
+}

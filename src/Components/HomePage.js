@@ -1,4 +1,6 @@
+import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom"
+import Loader from "./Loader";
 
 const Home = ({ 
     guestCount, setGuestCount, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate }) => {
@@ -8,6 +10,22 @@ const Home = ({
     const maxDate = new Date();
     maxDate.setDate(today.getDate()+90); // 90 days from today
     const maxDateString = maxDate.toISOString().split("T")[0]; 
+    const [featuredHotels, setFeaturedHotels] = useState([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(()=>{
+        const fetchFeaturedHotels = async () => {
+            try {
+                const response = await fetch("http://localhost:3500/featuredHotels");
+                const data = await response.json();
+                setFeaturedHotels(data);
+                setLoading(false);
+            } catch (error) {
+                console.log("Error fetching featured hotels:", error);
+            }
+        }
+
+        fetchFeaturedHotels();
+    },[])
 
     return (
         <div className="container mt-4">
@@ -63,6 +81,7 @@ const Home = ({
             </div>
 
             {/* Featured Hotels */}
+
             <div className="mb-5">
                 <div className="d-flex justify-content-between align-items-center mb-3">
                     <div>
@@ -71,41 +90,21 @@ const Home = ({
                     </div>
                     <NavLink to="/hotels" className="text-decoration-none">View all &rarr;</NavLink>
                 </div>
-
-                <div className="row">
-                    <Link to="/hotels/1" className="col-md-4 mb-3 text-decoration-none">
-                        <div className="card h-100 shadow-sm">
-                            <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 1" />
-                            <div className="card-body">
-                                <h5 className="card-title">Grand Palace Hotel</h5>
-                                <p className="card-text text-muted">Delhi • ⭐ 4.5</p>
-                                <p className="card-text fw-bold">Starting ₹3200 / night</p>
+                {loading && <Loader />}
+                {!loading && <div className="row">
+                    {featuredHotels.map(hotel => (
+                        <Link to={`/hotels/${hotel.id}`} key={hotel.id} className="col-md-4 mb-3 text-decoration-none">
+                            <div className="card h-100 shadow-sm">
+                                <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 1" />
+                                <div className="card-body">
+                                    <h5 className="card-title">{hotel.name}</h5>
+                                    <p className="card-text text-muted">{hotel.location} • ⭐ {hotel.rating}</p>
+                                    <p className="card-text fw-bold">Starting ₹{hotel.pricePerNight} / night</p>
+                                </div>
                             </div>
-                        </div>
-                    </Link>
-
-                    <Link to="/hotels/2" className="col-md-4 mb-3 text-decoration-none">
-                        <div className="card h-100 shadow-sm">
-                            <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 2" />
-                            <div className="card-body">
-                                <h5 className="card-title">Sea View Resort</h5>
-                                <p className="card-text text-muted">Goa • ⭐ 4.7</p>
-                                <p className="card-text fw-bold">Starting ₹5400 / night</p>
-                            </div>
-                        </div>
-                    </Link>
-
-                    <Link to="/hotels/3" className="col-md-4 mb-3 text-decoration-none">
-                        <div className="card h-100 shadow-sm">
-                            <img src="https://placeholder.pagebee.io/api/random/300/180" className="card-img-top" alt="featured 3" />
-                            <div className="card-body">
-                                <h5 className="card-title">Hilltop Inn</h5>
-                                <p className="card-text text-muted">Manali • ⭐ 4.2</p>
-                                <p className="card-text fw-bold">Starting ₹2800 / night</p>
-                            </div>
-                        </div>
-                    </Link>
-                </div>
+                        </Link>
+                    ))}  
+                </div>}
             </div>
         </div>
     )
