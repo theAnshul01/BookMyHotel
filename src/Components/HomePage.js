@@ -12,15 +12,19 @@ const Home = ({
     const maxDateString = maxDate.toISOString().split("T")[0]; 
     const [featuredHotels, setFeaturedHotels] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     useEffect(()=>{
         const fetchFeaturedHotels = async () => {
             try {
                 const response = await fetch("http://localhost:3500/featuredHotels");
                 const data = await response.json();
                 setFeaturedHotels(data);
-                setLoading(false);
+                
             } catch (error) {
                 console.log("Error fetching featured hotels:", error);
+                setError(error.message);
+            } finally{
+                setLoading(false);
             }
         }
 
@@ -91,6 +95,9 @@ const Home = ({
                     <NavLink to="/hotels" className="text-decoration-none">View all &rarr;</NavLink>
                 </div>
                 {loading && <Loader />}
+                {!loading && error && <div className="alert alert-danger" role="alert">
+                    Some Error Occurred: {error}
+                </div>}
                 {!loading && <div className="row">
                     {featuredHotels.map(hotel => (
                         <Link to={`/hotels/${hotel.id}`} key={hotel.id} className="col-md-4 mb-3 text-decoration-none">
