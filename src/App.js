@@ -89,7 +89,7 @@ function App() {
         <Route path="/listingadminlogin" element={<ListingAdminLogin />} />
         <Route path="/booking/:id" element={<BookingPage hotelList={hotelList} checkinDate={checkinDate} setCheckinDate={setCheckinDate} checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} guestCount={guestCount} setGuestCount={setGuestCount} />} />
         <Route path="/addhotel" element={<AddHotel />} />
-        <Route path="*" element={<Home />} /> //? fallback to home page for unknown routes
+        <Route path="*" element={<Home />} /> 
       </Routes>
       <Footer />
     </div>
