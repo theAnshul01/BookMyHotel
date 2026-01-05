@@ -95,7 +95,7 @@ const Home = ({
                     <NavLink to="/hotels" className="text-decoration-none">View all &rarr;</NavLink>
                 </div>
                 {loading && <Loader />}
-                {!loading && error && <div className="alert alert-danger" role="alert">
+                {!loading && error && <div className="alert alert-danger alert-dismissible" role="alert">
                     Some Error Occurred: {error}
                 </div>}
                 {!loading && <div className="row">

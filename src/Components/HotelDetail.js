@@ -3,20 +3,32 @@ import { useParams, Link } from "react-router-dom"
 const HotelDetail = ({ hotelList }) => {
 
     const { id } = useParams();
+    const hotel = hotelList.find(h => h.id === id);
+    
+    if(!hotel){
+        return (
+            <div className="container mt-4">
+                <div className="alert alert-danger text-center" role="alert">
+                    <h3>Hotel not found.</h3>
+                    <p>Please check the URL or return to the <Link to="/">home page</Link>.</p>
+                </div>
+            </div>
+        )
+    }
     return (
         <div className="container mt-3">
             {/* Hotel Name Jumbotron */}
             <div className="p-3 mb-3 bg-light rounded shadow-sm hotelName d-flex justify-content-between align-items-center">
                 <div className="main-info">
-                    <h1 className="display-5 fw-bold me-auto">{hotelList.find(hotel => hotel.id === parseInt(id))?.name}</h1> {/* either use parse int for the conversion of id from params to integer  or make the id to string using toString()*/}
+                    <h1 className="display-5 fw-bold me-auto">{hotel.name}</h1> {/* either use parse int for the conversion of id from params to integer  or make the id to string using toString()*/}
                     <div className="mt-3">
-                        <p className="fs-5 text-muted">Destination📍{hotelList.find(hotel => hotel.id === parseInt(id))?.location}</p>
-                        <p className=" fs-5 text-muted">Ratings ⭐ {hotelList.find(hotel => hotel.id === parseInt(id))?.rating}</p>
+                        <p className="fs-5 text-muted">Destination📍{hotel.location}</p>
+                        <p className=" fs-5 text-muted">Ratings ⭐ {hotel.rating}</p>
                     </div>
                 </div>
 
                 <div className="price-info text-end">
-                    <h3 className="fw-bold text-success">₹{hotelList.find(hotel => hotel.id === parseInt(id))?.pricePerNight} / Night</h3>
+                    <h3 className="fw-bold text-success">₹{hotel.pricePerNight} / Night</h3>
                     <Link to={`/booking/${id}`}>
                         <button className="btn btn-primary btn-lg mt-2">Book Now</button>
                     </Link>

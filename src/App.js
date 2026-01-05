@@ -77,7 +77,7 @@ function App() {
         setSortOption={setSortOption}/>
       <Routes>
         {loading && <Route path="*" element={<Loader />} />}
-        {!loading && error && <Route path="/hotels" element={<div className="alert alert-danger mt-3 container">Some Error Occurred : {error}</div>} />}
+        {!loading && error && <Route path="/hotels" element={<div className="alert alert-danger alert-dismissible mt-3 container">Some Error Occurred : {error}</div>} />}
         {!loading && <Route path="/" element={<Home guestCount={guestCount} setGuestCount={setGuestCount}
           checkinDate={checkinDate} setCheckinDate={setCheckinDate}
           checkoutDate={checkoutDate} setCheckoutDate={setCheckoutDate} />} />}

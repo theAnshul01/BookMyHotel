@@ -111,6 +111,30 @@
       "pricePerNight": 17000,
       "rating": 4.8,
       "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "3db8",
+      "name": "Hotel Kuno",
+      "location": "sheopur",
+      "pricePerNight": 1100,
+      "rating": 3.4,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "ef76",
+      "name": "Hotel Van Mangal",
+      "location": "Gwalior",
+      "pricePerNight": 1700,
+      "rating": 3.7,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "18ae",
+      "name": "Jungle Resort",
+      "location": "gurugram",
+      "pricePerNight": 3400,
+      "rating": 4,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
     }
   ],
   "featuredHotels": [
