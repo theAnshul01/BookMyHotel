@@ -17,7 +17,7 @@ const Login = () => {
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={()=>{
                         alert(`Not implemented yet`)
-                    }}>Login</button>
+                    }} disabled>Login</button>
                     <Link to="/signup" className="btn btn-link">Don't have an account? Sign up</Link>
                 </form>
             </div>

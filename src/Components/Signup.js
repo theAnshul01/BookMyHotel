@@ -28,7 +28,7 @@ const Signup = () => {
                     </div>
                     <button type="submit" className="btn btn-primary" onClick={() => {
                         alert(`Signup facility not implemented yet`)
-                    }}>Sign up</button>
+                    }} disabled>Sign up</button>
                     <Link to="/login" className="btn btn-link">Already have an account? Login</Link>
                 </form>
             </div>

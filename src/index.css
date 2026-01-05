@@ -41,6 +41,7 @@ button:disabled {
   pointer-events: all !important;
 }
 
+
 .property-highlights {
   background-color: #1075e0;
 }
@@ -51,7 +52,7 @@ button:disabled {
 }
 
 form.listingFormContainer {
-  
+
   max-width: 600px;
   min-height: auto;
   margin: 0 auto;

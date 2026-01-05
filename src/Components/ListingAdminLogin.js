@@ -17,7 +17,7 @@ const ListingAdminLogin = () => {
           </div>
           <button type="submit" className="btn btn-primary" onClick={() => {
             alert("Listing Admin login functionality is not implemented yet.");
-          }}>Login</button>
+          }} disabled>Login</button>
         </form>
 
         <div className='container mt-3'>For registering yourself as listing admin, drop an email with relevant proposals on <em>listingadmin@bookmyhotel.com</em>. Our team will get back to you soon.</div>
