@@ -15,6 +15,7 @@ import AddHotel from "./Components/AddHotel";
 // utility imports
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import { initializeLocalDb, getHotels } from './utils/localDb'
 import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
@@ -26,11 +27,9 @@ function App() {
   useEffect(() => {
     const fetchHotels = async() => {
       try {
-        const response = await fetch("http://localhost:3500/hotels");
-        const data = await response.json();
-        if(!response.ok){
-          throw new Error(data.message || "Failed to fetch hotel data");
-        }
+        // initialize and load hotels from localStorage
+        initializeLocalDb();
+        const data = await getHotels();
         setHotelList(data);
         
       } catch (error) {
@@ -43,6 +42,15 @@ function App() {
 
     fetchHotels();
   },[]);
+
+  // Listen for local DB updates (e.g., new hotels added) so we can update state live
+  useEffect(() => {
+    const onHotelsUpdated = (e) => {
+      if (e && e.detail) setHotelList(prev => [...prev, e.detail]);
+    }
+    window.addEventListener('bm_hotels_updated', onHotelsUpdated);
+    return () => window.removeEventListener('bm_hotels_updated', onHotelsUpdated);
+  }, []);
 
   const [searchResults, setSearchResults] = useState([]);
   // initialize as empty string so input is controlled and .toLowerCase() is safe

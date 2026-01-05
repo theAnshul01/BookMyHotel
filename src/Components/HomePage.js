@@ -1,35 +1,34 @@
 import { useEffect, useState } from "react";
+import { getFeaturedHotels } from "../utils/localDb";
 import { Link, NavLink } from "react-router-dom"
 import Loader from "./Loader";
 
-const Home = ({ 
+const Home = ({
     guestCount, setGuestCount, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate }) => {
 
     // calculate max date for checkout (90 days from today)
     const today = new Date();
     const maxDate = new Date();
-    maxDate.setDate(today.getDate()+90); // 90 days from today
-    const maxDateString = maxDate.toISOString().split("T")[0]; 
+    maxDate.setDate(today.getDate() + 90); // 90 days from today
+    const maxDateString = maxDate.toISOString().split("T")[0];
     const [featuredHotels, setFeaturedHotels] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    useEffect(()=>{
+    useEffect(() => {
         const fetchFeaturedHotels = async () => {
             try {
-                const response = await fetch("http://localhost:3500/featuredHotels");
-                const data = await response.json();
+                const data = await getFeaturedHotels();
                 setFeaturedHotels(data);
-                
             } catch (error) {
                 console.log("Error fetching featured hotels:", error);
                 setError(error.message);
-            } finally{
+            } finally {
                 setLoading(false);
             }
         }
 
         fetchFeaturedHotels();
-    },[])
+    }, [])
 
     return (
         <div className="container mt-4">
@@ -58,24 +57,24 @@ const Home = ({
                     <form className="row g-2 align-items-end">
                         <div className="col-sm-6 col-md-3">
                             <label className="form-label">Destination</label>
-                            <input type="text" className="form-control" placeholder="Enter city or hotel name"/>
+                            <input type="text" className="form-control" placeholder="Enter city or hotel name" />
                         </div>
                         <div className="col-sm-3 col-md-2">
                             <label htmlFor="checkin" className="form-label">Check-in</label>
-                            <input type="date" className="form-control" id="checkin" 
-                            min={new Date().toISOString().split("T")[0]}
-                            value={checkinDate} onChange={(e) => setCheckinDate(e.target.value)} />
+                            <input type="date" className="form-control" id="checkin"
+                                min={new Date().toISOString().split("T")[0]}
+                                value={checkinDate} onChange={(e) => setCheckinDate(e.target.value)} />
                         </div>
                         <div className="col-sm-3 col-md-2">
                             <label htmlFor="checkout" className="form-label">Check-out</label>
-                            <input type="date" className="form-control" id="checkout" 
-                            min={checkinDate} max={maxDateString}
-                            value={checkoutDate} onChange={(e) => setCheckoutDate(e.target.value)} />
+                            <input type="date" className="form-control" id="checkout"
+                                min={checkinDate} max={maxDateString}
+                                value={checkoutDate} onChange={(e) => setCheckoutDate(e.target.value)} />
                         </div>
                         <div className="col-sm-12 col-md-2">
                             <label htmlFor="guestcount" className="form-label">Guest-count</label>
                             <input type="number" className="form-control" id="guestcount"
-                            value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))} />
+                                value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))} />
                         </div>
                         <div className="col-sm-12 col-md-3 d-grid">
                             <button type="button" className="btn btn-success btn-block" disabled>Search Hotels</button>
@@ -110,7 +109,7 @@ const Home = ({
                                 </div>
                             </div>
                         </Link>
-                    ))}  
+                    ))}
                 </div>}
             </div>
         </div>

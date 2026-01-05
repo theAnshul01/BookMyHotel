@@ -50,6 +50,8 @@ npm start
 
 Open `http://localhost:3000` in your browser. The app will reload on code changes.
 
+> Note: This project previously used `json-server` for mock APIs. It now seeds its data from `src/data/db.json` into `localStorage` on first run, so no separate json-server is required for development or deployment.
+
 ---
 
 ## Available Scripts

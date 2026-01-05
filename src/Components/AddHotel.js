@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addHotel } from "../utils/localDb";
 
 const AddHotel = () => {
     const [successMessage, setSuccessMessage] = useState(false);
@@ -22,24 +23,13 @@ const AddHotel = () => {
     const listHotel = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:3500/hotels", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    ...hotelData,
-                    pricePerNight: Number(hotelData.pricePerNight),
-                    rating: Number(hotelData.rating)
-                })
-            })
+            const payload = {
+                ...hotelData,
+                pricePerNight: Number(hotelData.pricePerNight),
+                rating: Number(hotelData.rating)
+            };
 
-            if (!response.ok) {
-                throw new Error("Failed to list hotel");
-            }
-
-            const data = await response.json();
-
+            const data = await addHotel(payload);
             console.log("Hotel listed successfully:", data);
             setHotelData({
                 name: "",
