@@ -1,0 +1,168 @@
+{
+  "hotels": [
+    {
+      "id": "1",
+      "name": "Grand Palace Hotel",
+      "location": "Delhi",
+      "pricePerNight": 3200,
+      "rating": 4.5,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "2",
+      "name": "Sea View Resort",
+      "location": "Goa",
+      "pricePerNight": 5400,
+      "rating": 4.7,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "3",
+      "name": "Hilltop Inn",
+      "location": "Manali",
+      "pricePerNight": 2800,
+      "rating": 4.2,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "4",
+      "name": "City Comfort Stay",
+      "location": "Bangalore",
+      "pricePerNight": 4100,
+      "rating": 4,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "5",
+      "name": "Lakeside Retreat",
+      "location": "Udaipur",
+      "pricePerNight": 4500,
+      "rating": 4.6,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "6",
+      "name": "Desert Oasis",
+      "location": "Jaisalmer",
+      "pricePerNight": 3800,
+      "rating": 4.3,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "7",
+      "name": "Mountain Breeze",
+      "location": "Shimla",
+      "pricePerNight": 2950,
+      "rating": 4.1,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "8",
+      "name": "Coastal Breeze",
+      "location": "Pondicherry",
+      "pricePerNight": 3300,
+      "rating": 4.4,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "9",
+      "name": "Urban Elegance",
+      "location": "Mumbai",
+      "pricePerNight": 6200,
+      "rating": 4.8,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "10",
+      "name": "Garden View",
+      "location": "Kolkata",
+      "pricePerNight": 3000,
+      "rating": 3.9,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "11",
+      "name": "Riverside Lodge",
+      "location": "Rishikesh",
+      "pricePerNight": 2700,
+      "rating": 4.2,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "12",
+      "name": "Heritage Courtyard",
+      "location": "Jaipur",
+      "pricePerNight": 3600,
+      "rating": 4.5,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "466e",
+      "name": "The Taj",
+      "location": "Marine Drive, Mumbai",
+      "pricePerNight": 25000,
+      "rating": 4.9,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "9a12",
+      "name": "The Leela",
+      "location": "Delhi",
+      "pricePerNight": 17000,
+      "rating": 4.8,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "3db8",
+      "name": "Hotel Kuno",
+      "location": "sheopur",
+      "pricePerNight": 1100,
+      "rating": 3.4,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "ef76",
+      "name": "Hotel Van Mangal",
+      "location": "Gwalior",
+      "pricePerNight": 1700,
+      "rating": 3.7,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "18ae",
+      "name": "Jungle Resort",
+      "location": "gurugram",
+      "pricePerNight": 3400,
+      "rating": 4,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    }
+  ],
+  "featuredHotels": [
+    {
+      "id": "2",
+      "name": "Sea View Resort",
+      "location": "Goa",
+      "pricePerNight": 5400,
+      "rating": 4.7,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "9",
+      "name": "Urban Elegance",
+      "location": "Mumbai",
+      "pricePerNight": 6200,
+      "rating": 4.8,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    },
+    {
+      "id": "5",
+      "name": "Lakeside Retreat",
+      "location": "Udaipur",
+      "pricePerNight": 4500,
+      "rating": 4.6,
+      "image": "https://placeholder.pagebee.io/api/random/300/200"
+    }
+  ],
+  "users": [],
+  "bookings": []
+}

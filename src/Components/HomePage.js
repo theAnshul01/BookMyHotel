@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { getFeaturedHotels } from "../utils/localDb";
-import { Link, NavLink } from "react-router-dom"
+import { Link, NavLink, useNavigate } from "react-router-dom"
 import Loader from "./Loader";
 
 const Home = ({
     guestCount, setGuestCount, checkinDate, setCheckinDate, checkoutDate, setCheckoutDate }) => {
+    const navigate = useNavigate();
 
     // calculate max date for checkout (90 days from today)
     const today = new Date();
@@ -77,7 +78,13 @@ const Home = ({
                                 value={guestCount} onChange={(e) => setGuestCount(parseInt(e.target.value))} />
                         </div>
                         <div className="col-sm-12 col-md-3 d-grid">
-                            <button type="button" className="btn btn-success btn-block" disabled>Search Hotels</button>
+                            <button
+                                type="button"
+                                className="btn btn-success btn-block"
+                                onClick={() => navigate("/hotels")}
+                            >
+                                Search Hotels
+                            </button>
                         </div>
                     </form>
                 </div>
