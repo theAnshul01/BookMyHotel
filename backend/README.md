@@ -43,3 +43,25 @@ curl -X POST http://localhost:4000/auth/register \
   -H "Content-Type: application/json" \
   -d '{"name":"Test User","email":"test@example.com","password":"password"}'
 ```
+
+## Working Preview (Local)
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+In a second terminal, try:
+
+```bash
+curl http://localhost:4000/health
+curl http://localhost:4000/hotels?limit=3
+```
+
+## Functionality Map (Mental Model)
+
+- **Hotels** → `/hotels` and `/hotels/:id` return list + detail data (search, sort, pagination).
+- **Auth** → `/auth/register` and `/auth/login` issue JWT tokens for the frontend.
+- **Bookings** → `/bookings` creates bookings for the authenticated user.
+- **Users** → `/users/:id/bookings` returns bookings for the logged-in user only.

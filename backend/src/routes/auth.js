@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { nanoid } from "nanoid";
-import { updateDb } from "../data/store.js";
+import { getDb, updateDb } from "../data/store.js";
 
 const router = express.Router();
 
@@ -70,8 +70,8 @@ router.post("/login", async (req, res, next) => {
 
     const normalizedEmail = email.toLowerCase();
 
-    const result = await updateDb((data) => data);
-    const user = (result.users || []).find((item) => item.email === normalizedEmail);
+    const db = await getDb();
+    const user = (db.users || []).find((item) => item.email === normalizedEmail);
 
     if (!user) {
       return res.status(401).json({ message: "Invalid credentials" });
